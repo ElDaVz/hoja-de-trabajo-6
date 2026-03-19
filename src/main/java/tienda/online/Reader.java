@@ -20,8 +20,8 @@ public class Reader {
                 }
 
                 var data =  line.split("\\|", 2);
-                var category = data[0].trim();
-                var product = data[1].trim();
+                var category = data[0].trim().toLowerCase();
+                var product = data[1].trim().toLowerCase();
 
                 map.put(product, category);
 
