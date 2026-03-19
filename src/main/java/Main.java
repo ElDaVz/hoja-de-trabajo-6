@@ -33,6 +33,10 @@ public class Main {
 
         Store store = new Store(inventory, cart);
 
+        //benchmark(1); // HashMap
+        //benchmark(2); // TreeMap
+        //benchmark(3); // LinkedHashMap tests for compiler
+
         // Menú principal
         boolean running = true;
         while (running) {
@@ -100,4 +104,22 @@ public class Main {
             }
         }
     }
+/*
+    private static void benchmark(int mapOption) {
+        System.out.println("\n--- Map opción " + mapOption + " ---");
+        Map<String, String> inventory = MapFactory.getMap(mapOption);
+        Map<String, String> loaded = Reader.readFile("ListadoProducto.txt");
+        inventory.putAll(loaded);
+
+        // Inflar el inventario para que el profiler note diferencias
+        for (int i = 0; i < 100000; i++) {
+            inventory.put("producto" + i, "categoria" + i);
+        }
+
+        Store store = new Store(inventory, new java.util.HashMap<>());
+        store.showInventory();
+    }
+
+    TESTS FOR COMPILER ONLY.
+ */
 }
